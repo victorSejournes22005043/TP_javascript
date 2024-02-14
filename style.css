@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+section{
+    margin: 50px;
+    border-radius: 10px;
+    background-color: #c2c2c2;
+    box-shadow: 5px 5px 5px #d6d6d6;
+    width: 250px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cadreBleu{
+    border: solid 2px blue;
+    border-radius: 5px;
+    padding: 10px;
+}
+.cadreVert{
+    border: solid 2px green;
+    border-radius: 5px;
+    padding: 10px;
+}
+.cadreOrange{
+    border: solid 2px orange;
+    border-radius: 5px;
+    padding: 10px;
+}
+.cadreRouge{
+    border: solid 2px red;
+    border-radius: 5px;
+    padding: 10px;
+}
