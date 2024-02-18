@@ -11,7 +11,7 @@ var historiqueTable = document.getElementById("historique-table");
 var i = 0;
 
 let interval  =setInterval(displayValue, 1000);
-console.log(tab);
+//console.log(tab);
 
 /* Le Sujet observable*/
 class Observable {
@@ -44,7 +44,6 @@ class Logger {
     }
 
     update(data) {
-        console.log(data + ' Logger');
         this.temp = data;
         displayLabel.innerHTML = this.temp + "<abbr>°C</abbr>";
         if(displayLabel.classList != ""){displayLabel.classList.remove(displayLabel.className);}
@@ -67,7 +66,6 @@ class Logger2 {
     }
 
     update(data) {
-        console.log(data + ' Logger 2');
         var row = historiqueTable.insertRow(0);
         var cell1 = row.insertCell(0);
         cell1.innerHTML = data + "<abbr>°C</abbr>";
@@ -80,7 +78,6 @@ class Logger3 {
     }
 
     update(data) {
-        console.log(data + ' Logger 3');
         if (data <= 0){
             message.innerText = "Brrrrrrr, un peu froid ce matin, mets ta cagoule !";
         }else if (data <= 20){
@@ -120,11 +117,27 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-function displayValue(){
-    console.log(i);
-    ob.notify(tab[i]);
-    i++;
-    if(tab[i] === undefined){
-        clearInterval(interval);
+async function fetchValue() {
+    const r = await fetch("https://hothothot.dog/api/capteurs/exterieur", {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    });
+    if (r.ok) {
+        const jsonResponse = await r.json();
+        return jsonResponse;
     }
+    throw new Error("Impossible de contacter l'API");
+}
+
+function displayValue(){
+    (async () => {
+        try {
+            const jsonValue = await fetchValue();
+            ob.notify(jsonValue.capteurs[0].Valeur);
+        } catch (error) {
+            console.error(error);
+        }
+    })();
 }
