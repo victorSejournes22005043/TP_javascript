@@ -6,19 +6,32 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <section id="historique-section">
-        <h1>Historique</h1>
-        <table id="historique-table">
-            <tr>
+    <!-- navigation onglets -->
+    <nav class="tab" role="tablist">
+        <button class="tablinks" onclick="openTab(event, 'thermometre')" role="tab">Thermometre</button>
+        <button class="tablinks" onclick="openTab(event, 'historique')" role="tab">Historique</button>
+    </nav>
 
-            </tr>
-        </table>
-    </section>
-    <section id="thermometre-section">
-        <h1>Thermomètre</h1>
-        <label id="display-label"></label>
-        <label id="message"></label>
-    </section>
+    <!-- onglet 1 -->
+    <div id="historique" class="tabcontent" role="tabpanel">
+        <section id="historique-section">
+            <h1>Historique</h1>
+            <table id="historique-table">
+                <tr>
+
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <!-- onglet 2 -->
+    <div id="thermometre" class="tabcontent" role="tabpanel">
+        <section id="thermometre-section">
+            <h1>Thermomètre</h1>
+            <label id="display-label" aria-live='assertive'></label>
+            <label id="message" role="alert"></label>
+        </section>
+    </div>
 </body>
 <script src="script.js"></script>
 </html>
