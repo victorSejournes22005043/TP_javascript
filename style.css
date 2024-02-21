@@ -2,7 +2,7 @@ bod, html{
     font: 400 14px/20px Torus,monospace;
     height: 100%;
     /*backgroud réalisé par hallowatcher. source : https://oma.hwc.hr/*/
-    background: linear-gradient(135deg,rgba(53,136,136,.7) 15%,rgba(48,97,97,.9) 30%,#282628 110%),url(/assets/bgPattern.png)!important;
+    background: linear-gradient(135deg,rgba(53,136,136,.7) 15%,rgba(48,97,97,.9) 30%,#282628 110%),url(assets/bgPattern.png)!important;
 }
 
 label, h1, p, td{
